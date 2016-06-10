@@ -25,9 +25,6 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('api_key')
                     ->isRequired()
                 ->end()
-                ->scalarNode('api_user')
-                    ->isRequired()
-                ->end()
             ->end()
         ; 
 

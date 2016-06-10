@@ -3,19 +3,15 @@
   <services>
     <service id="beelab_mailchimp.compaigns" class="Mailchimp\MailchimpCompaigns">
         <argument>%mailchimp_api_key%</argument>
-        <argument>%mailchimp_api_user%</argument>
     </service>
     <service id="beelab_mailchimp.lists" class="Mailchimp\MailchimpLists">
         <argument>%mailchimp_api_key%</argument>
-        <argument>%mailchimp_api_user%</argument>
     </service>
     <service id="beelab_mailchimp.reports" class="Mailchimp\MailchimpReports">
         <argument>%mailchimp_api_key%</argument>
-        <argument>%mailchimp_api_user%</argument>
     </service>
     <service id="beelab_mailchimp.templates" class="Mailchimp\MailchimpTemplates">
         <argument>%mailchimp_api_key%</argument>
-        <argument>%mailchimp_api_user%</argument>
     </service>
   </services>
 </container>
