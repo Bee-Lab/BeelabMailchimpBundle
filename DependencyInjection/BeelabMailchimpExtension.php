@@ -23,6 +23,9 @@ class BeelabMailchimpExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('beelab_mailchimp.api_key', $config['api_key']);
+        $container->setParameter('beelab_mailchimp.service_class', $config['service_class']);
+        unset($config['service_class']);
+        $container->setParameter('beelab_mailchimp.config', $config);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');

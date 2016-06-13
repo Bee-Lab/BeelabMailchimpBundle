@@ -25,6 +25,10 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('api_key')
                     ->isRequired()
                 ->end()
+                ->scalarNode('service_class')
+                    ->cannotBeEmpty()
+                    ->defaultValue("Beelab\MailchimpBundle\Mailchimper\Mailchimper")
+                ->end()
             ->end()
         ; 
 
