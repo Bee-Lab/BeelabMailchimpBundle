@@ -1,4 +1,4 @@
-BeelabRecaptcha2Bundle
+BeelabMailchimpBundle
 ======================
 
 1. [Installation](#1-installation)
