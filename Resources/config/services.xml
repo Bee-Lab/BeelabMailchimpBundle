@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
+    <service id="beelab.guzzle_client" class="GuzzleHttp\Client"></service>
     <service id="beelab_mailchimp.campaigns" class="Mailchimp\MailchimpCampaigns">
-        <argument>%mailchimp_api_key%</argument>
+        <argument type="service" id="beelab.guzzle_client"/>
     </service>
     <service id="beelab_mailchimp.lists" class="Mailchimp\MailchimpLists">
-        <argument>%mailchimp_api_key%</argument>
+        <argument type="service" id="beelab.guzzle_client"/>
     </service>
     <service id="beelab_mailchimp.reports" class="Mailchimp\MailchimpReports">
-        <argument>%mailchimp_api_key%</argument>
+        <argument type="service" id="beelab.guzzle_client"/>
     </service>
     <service id="beelab_mailchimp.templates" class="Mailchimp\MailchimpTemplates">
-        <argument>%mailchimp_api_key%</argument>
+        <argument type="service" id="beelab.guzzle_client"/>
     </service>
     <service id="beelab_mailchimp.mailchimper" class="%beelab_mailchimp.service_class%">
         <argument type="service" id="beelab_mailchimp.campaigns" />
