@@ -3,6 +3,7 @@
 namespace Beelab\MailchimpBundle\Mailchimper;
 
 use Mailchimp\MailchimpCampaigns;
+use Mailchimp\MailchimpReports;
 
 class Mailchimper
 {
@@ -12,13 +13,20 @@ class Mailchimper
     private $campaigner;
 
     /**
+     * @var MailchimpReports
+     */
+    private $reporter;
+
+    /**
      * @param MailchimpCampaigns $campaigner
      */
     public function __construct(
-        MailchimpCampaigns $campaigner
+        MailchimpCampaigns $campaigner,
+        MailchimpReports $reporter
     )
     {
         $this->campaigner = $campaigner;
+        $this->reporter = $reporter;
 
     }
 
@@ -27,6 +35,7 @@ class Mailchimper
      */
     public function setApiKey($apiKey){
         $this->campaigner->setApiKey($apiKey);
+        $this->reporter->setApiKey($apiKey);
     }
 
     /**
@@ -115,5 +124,10 @@ class Mailchimper
         return $this->campaigner->send($id, $batch);
      }
 
+
+     public function stats($id)
+     {
+        return $this->reporter->getCampaignSummary($id);
+     }
 
 }

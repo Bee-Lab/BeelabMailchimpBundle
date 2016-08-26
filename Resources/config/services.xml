@@ -16,6 +16,8 @@
     </service>
     <service id="beelab_mailchimp.mailchimper" class="%beelab_mailchimp.service_class%">
         <argument type="service" id="beelab_mailchimp.campaigns" />
+        <argument type="service" id="beelab_mailchimp.reports" />
+
     </service>
   </services>
 </container>
