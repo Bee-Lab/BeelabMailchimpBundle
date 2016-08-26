@@ -11,7 +11,6 @@ class Mailchimper
      */
     private $campaigner;
 
-
     /**
      * @param MailchimpCampaigns $campaigner
      */
@@ -20,6 +19,14 @@ class Mailchimper
     )
     {
         $this->campaigner = $campaigner;
+
+    }
+
+    /**
+     * @param string $apiKey
+     */
+    public function setApiKey($apiKey){
+        $this->campaigner->setApiKey($apiKey);
     }
 
     /**
