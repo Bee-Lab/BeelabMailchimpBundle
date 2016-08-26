@@ -2,22 +2,23 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
     <service id="beelab.guzzle_client" class="GuzzleHttp\Client"></service>
-    <service id="beelab_mailchimp.campaigns" class="Mailchimp\MailchimpCampaigns">
+    <service id="beelab_mailchimp.campaigns" class="Mailchimp\MailchimpCampaigns" public="false">
         <argument type="service" id="beelab.guzzle_client"/>
     </service>
-    <service id="beelab_mailchimp.lists" class="Mailchimp\MailchimpLists">
+    <service id="beelab_mailchimp.lists" class="Mailchimp\MailchimpLists" public="false">
         <argument type="service" id="beelab.guzzle_client"/>
     </service>
-    <service id="beelab_mailchimp.reports" class="Mailchimp\MailchimpReports">
+    <service id="beelab_mailchimp.reports" class="Mailchimp\MailchimpReports" public="false">
         <argument type="service" id="beelab.guzzle_client"/>
     </service>
-    <service id="beelab_mailchimp.templates" class="Mailchimp\MailchimpTemplates">
+    <service id="beelab_mailchimp.templates" class="Mailchimp\MailchimpTemplates" public="false">
         <argument type="service" id="beelab.guzzle_client"/>
     </service>
     <service id="beelab_mailchimp.mailchimper" class="%beelab_mailchimp.service_class%">
         <argument type="service" id="beelab_mailchimp.campaigns" />
         <argument type="service" id="beelab_mailchimp.reports" />
-
+        <argument type="service" id="beelab_mailchimp.lists" />
+        <argument type="service" id="beelab_mailchimp.templates" />
     </service>
   </services>
 </container>

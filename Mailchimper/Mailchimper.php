@@ -4,6 +4,8 @@ namespace Beelab\MailchimpBundle\Mailchimper;
 
 use Mailchimp\MailchimpCampaigns;
 use Mailchimp\MailchimpReports;
+use Mailchimp\MailchimpLists;
+use Mailchimp\MailchimpTemplates;
 
 class Mailchimper
 {
@@ -18,24 +20,43 @@ class Mailchimper
     private $reporter;
 
     /**
+     * @var MailchimpLists
+     */
+    private $lister;
+
+    /**
+     * @var MailchimpTemplates
+     */
+    private $templater;
+
+    /**
      * @param MailchimpCampaigns $campaigner
      */
     public function __construct(
         MailchimpCampaigns $campaigner,
-        MailchimpReports $reporter
+        MailchimpReports $reporter,
+        MailchimpLists $lister,
+        MailchimpTemplates $templater
     )
     {
         $this->campaigner = $campaigner;
         $this->reporter = $reporter;
+        $this->lister = $lister;
+        $this->templater = $templater;
 
     }
 
     /**
      * @param string $apiKey
+     *
+     * TODO: Questo si potrebbe migliorare, invece di iniettare le singole classi
+     * potrei pensare di iniettarmi solo la classe MailChimp vedi
      */
     public function setApiKey($apiKey){
         $this->campaigner->setApiKey($apiKey);
         $this->reporter->setApiKey($apiKey);
+        $this->lister->setApiKey($apiKey);
+        $this->templater->setApiKey($apiKey);
     }
 
     /**
@@ -121,10 +142,13 @@ class Mailchimper
      */
      public function send($id, $batch = false)
      {
-        return $this->campaigner->send($id, $batch);
+         return $this->campaigner->send($id, $batch);
      }
 
-
+    /**
+     * @param $id
+     * @return object
+     */
      public function stats($id)
      {
         return $this->reporter->getCampaignSummary($id);
