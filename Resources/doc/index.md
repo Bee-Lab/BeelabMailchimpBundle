@@ -28,19 +28,6 @@ public function registerBundles()
 }
 ```
 
-### 2. Configuration
-
-Add following lines in your configuration:
-
-``` yaml
-# app/config/config.yml
-
-beelab_mailchimp:
-    api_key: "%mailchimp_api_key%"
-```
-
-You should define ``mailchimp_api_key`` parameters in your ``app/config/parameters.yml`` file.
-
 ### 3. Usage
 
 TODO
